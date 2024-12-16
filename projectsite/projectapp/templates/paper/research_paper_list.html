@@ -1,0 +1,70 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Research List {% endblock %} 
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+        <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">Research List</h4>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <table id="papersTable" class="table">
+                      <thead class=" text-primary">
+                        <th>Title</th>
+                        <th>Authors</th>
+                        <th>Faculty</th>
+                        <th>Year</th>
+                        {% if request.user.is_superuser %} 
+                            <th>Action</th>
+                        {%endif%}
+                      </thead>
+                      <tbody>
+                        {% for paper in papers %}
+                            <tr>
+                                <td>{{ paper.title }}</td>
+                                <td>
+                                    {% if paper.authors|length >= 1 %}
+                                        {% for author in paper.authors|slice:":1" %}
+                                            {{ author }}{% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                        , et al.
+                                    {% else %}
+                                        {% for author in paper.authors %}
+                                            {{ author }}{% if not forloop.last %}, {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                </td>
+                                <td>{{ paper.faculty }}</td>
+                                <td>{{ paper.year }}</td>
+                                {% if request.user.is_superuser %} 
+                                <td><a href="{% url 'edit_research_paper' paper_id=paper.id %}">Edit</a></td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+{% endblock content %}
+
+{% block javascripts %}
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        // Initialize DataTables
+        $('#papersTable').DataTable();
+    });
+</script>
+{% endblock javascripts %}

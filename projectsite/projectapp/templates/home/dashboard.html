@@ -1,0 +1,21 @@
+{% extends "layouts/base.html" %}
+
+{% block content %}
+  <div id="graph-container">
+    <!-- Directly include the Bokeh plot's div and script -->
+    <div>{{ div|safe }}</div>
+    <script type="text/javascript">{{ script|safe }}</script>
+  </div>
+{% endblock content %}
+
+{% block javascripts %}
+  <script>
+    $(document).ready(function() {
+        if (typeof md !== "undefined" && typeof md.initDashboardPageCharts === "function") {
+            md.initDashboardPageCharts();
+        } else {
+            console.log("Dashboard charts initialization skipped: 'md.initDashboardPageCharts' is not defined.");
+        }
+    });
+  </script>
+{% endblock javascripts %}

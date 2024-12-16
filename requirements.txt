@@ -1,0 +1,7 @@
+sentence-transformers 
+pymongo 
+pinecone-client 
+nltk 
+bokeh 
+networkx 
+scikit-learn

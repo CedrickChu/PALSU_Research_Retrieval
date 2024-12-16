@@ -1,0 +1,28 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Icons {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+{% load static %}
+{% block content %}
+<section class="hero" style="background-image: url('{% static "images/bg3.png"%}'); ">
+    <div class="container">
+        <img src="{% static "images/logo.png"%}" alt="logo" style='height:100px; width:50%; margin:auto;'>
+        <p>Find what you need with ease!</p>
+        <div class="container-input" >
+            <form method="post" action="{% url 'search' %}">
+                {% csrf_token %}
+                    <input type="text" name="query" placeholder="Search" class='input'>
+                <svg fill="#000000" width="20px" height="20px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg">
+            </svg>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

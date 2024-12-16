@@ -1,0 +1,15 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Research List {% endblock %} 
+
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+<h3><a href="#">{{ thesis.title }}</a></h3>
+<hr style="border-width: 2px; border-color:black">
+<div class="search-thesis">
+    <p>Year: {{ thesis.year }}</p>
+    <p>Authors: {{ thesis.authors }}</p>
+    <p>PDF: <a href="{{ thesis.filename }}" target="_blank">View Thesis PDF</a></p>
+</div>
+{% endblock %}

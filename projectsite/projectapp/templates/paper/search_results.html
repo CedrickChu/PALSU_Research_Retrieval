@@ -1,0 +1,42 @@
+{% extends "layouts/base.html" %}
+{% block title %}Search Result{% endblock %}
+{% block content %}
+<br><br><br>
+<div class='result'>Results for: {{ query }}</div>
+<hr style="border-width: 2px; border-color:black">
+
+{% for result in results %}
+    {% if result.file_url %}
+        <span class='title'>
+            <a href="{% url 'thesis_detail' thesis_id=result.file_url %}">{{ result.thesis_name }}</a>
+        </span>
+    {% else %}
+        <span class='title'>
+            {{ result.thesis_name }}
+        </span>
+    {% endif %}
+    
+    <ul class='list-item'>
+        <li>
+            <span class='authors'>
+                {% for author in result.authors %}
+                    {{ author }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            </span>
+        </li>
+        &middot;
+        <span class='faculty'>{{ result.faculty }} &middot;</span>
+        <span>{{ result.year }}</span>
+    </ul>
+    <p class='pdf'>
+        {% if result.filename %}
+            <a href="{{ result.filename }}">[PDF] Open PDF</a>
+        {% else %}
+            No PDF available.
+        {% endif %}
+    </p>
+    
+    <hr>
+{% endfor %}
+
+{% endblock %}

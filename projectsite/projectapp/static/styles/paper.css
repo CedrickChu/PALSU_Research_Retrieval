@@ -1,0 +1,36 @@
+.title{
+    font-size: 18px;
+    font-weight:600;
+}
+.authors, .categery .published_date{
+    font-size: 14px;
+}
+.published_date{
+    margin-left: 20px;
+}
+.authors, .pdf{
+    background: #fff5f5;
+    border-radius: 3px;
+    color: #0f3875;
+    display: inline-block;
+    height: inherit;
+    margin-bottom: 6px;
+    margin-right: 6px;
+    padding: 3px 9px;
+    text-decoration: none;
+}
+
+.list-item{
+    padding-left: 0; 
+    list-style-type: none; 
+}
+.list-item .authors{
+    display: inline;
+}
+.result{
+    font-family: Roboto Slab, Georgia, serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+    
+}

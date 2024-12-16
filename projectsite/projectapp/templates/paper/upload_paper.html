@@ -1,0 +1,58 @@
+
+{% extends "layouts/base.html" %}
+
+{% block content %}
+<br>
+<br>
+<section>
+   
+    <form method="POST" enctype="multipart/form-data" style='width:50%; margin:auto;'>
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" class="form-control" required>
+        </div>
+
+        <div class="form-group">
+            <div class="d-flex justify-content-between align-items-center">
+                <label for="authors">Authors: (Comma Seperated)</label>
+            </div>
+            <div id="author-fields">
+                <div class="author-field">
+                    <input type="text" name="authors (e.g 'name 1, name 2, name 3')" class="form-control" placeholder='author'required>
+                    <br>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group" style='width:30%;'>
+            <label for="year">Published Date:</label>
+            <input type="date" id="year" name="year" class="form-control">
+        </div>
+
+        <div class="form-group" style='width:30%;'>
+            <label for="faculty">College:</label>
+            <select id="faculty" name="faculty" class="form-control">
+                <option value="" disabled selected>Select College</option>
+                <option value="Sciences">Sciences</option>
+                <option value="Technology and Engineering">Technology and Engineering</option>
+                <option value="Business and Accountancy">Business and Accountancy</option>
+                <option value="Nursing and Health Sciences">Nursing and Health Sciences</option>
+                <option value="Arts and Humanities">Arts and Humanities</option>
+                <option value="Teacher Education">Teacher Education</option>
+                <option value=" Criminal Justice Education"> Criminal Justice Education</option>
+                <option value="Hospitality and Tourism">Hospitality and Tourism</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="pdf" class='form-label'>Upload File:</label>
+            <input type="file" id="pdf" name="pdf" class="form-control" accept=".pdf, .doc,.docx,.xml,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required/>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</section>
+{% endblock %}
+
